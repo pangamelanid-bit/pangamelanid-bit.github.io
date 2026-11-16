@@ -1877,9 +1877,14 @@
     }
 
     .coffee-support-strip {
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--line-dark);
+      margin-top: 40px;
+      padding: 24px 28px;
+      background-color: var(--navy);
+      background-image: linear-gradient(135deg, var(--navy-card) 0%, var(--navy) 100%);
+      color: var(--white);
+      border: 1px solid var(--gold-a45);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -1890,20 +1895,31 @@
       flex: 1 1 320px;
       min-width: 0;
     }
+    .coffee-support-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .coffee-support-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+      display: block;
+    }
     .coffee-support-title {
       font-family: var(--font-display);
       font-size: clamp(1.15rem, 2vw, 1.35rem);
       font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1.14;
-      color: var(--ink-navy);
-      margin-bottom: 4px;
+      color: var(--gold);
+      margin: 0;
     }
     .coffee-support-desc {
       font-family: var(--font-body);
       font-size: 0.92rem;
       line-height: 1.65;
-      color: var(--ink-muted);
+      color: var(--white-soft);
       max-width: 58ch;
       margin: 0;
     }
@@ -3683,10 +3699,19 @@
           <!-- Dukungan Kopi Kreator -->
           <div class="coffee-support-strip">
             <div class="coffee-support-copy">
-              <h3 class="coffee-support-title" data-i18n="coffee_title">Dukungan Kopi Kreator</h3>
+              <div class="coffee-support-title-row">
+                <svg class="coffee-support-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17 8h1a4 4 0 0 1 0 8h-1"/>
+                  <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/>
+                  <line x1="6" y1="2" x2="6" y2="4"/>
+                  <line x1="10" y1="2" x2="10" y2="4"/>
+                  <line x1="14" y1="2" x2="14" y2="4"/>
+                </svg>
+                <h3 class="coffee-support-title" data-i18n="coffee_title">Dukungan Kopi Kreator</h3>
+              </div>
               <p class="coffee-support-desc" data-i18n="coffee_desc">Semua ini tidak akan terwujud jika tidak ada kopi. Dukungan Anda mempengaruhi perkembangan PAN Gamelan.</p>
             </div>
-            <a class="btn btn-outline-dark btn-sm" href="https://pan-gamelan.myr.id/galang-dana/v2/buat-beli-kopi" target="_blank" rel="noopener" data-i18n="cta_coffee">Buat Beli Kopi</a>
+            <a class="btn btn-gold btn-sm" href="https://pan-gamelan.myr.id/galang-dana/v2/buat-beli-kopi" target="_blank" rel="noopener" data-i18n="cta_coffee">Buat Beli Kopi</a>
           </div>
         </div>
       </div>
