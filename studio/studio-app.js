@@ -74,6 +74,57 @@ const el = {
   toastWrap: document.getElementById('toastWrap')
 };
 
+const PREFS_KEY = 'pan_studio_prefs';
+const ROOM_SESSION_KEY = 'pan_studio_room_session';
+let _guestRetryTimer = null;
+let _guestRetryCount = 0;
+
+function loadPrefs() {
+  try {
+    return JSON.parse(localStorage.getItem(PREFS_KEY) || '{}') || {};
+  } catch (_) {
+    return {};
+  }
+}
+
+function savePrefs(partial = {}) {
+  try {
+    const next = {
+      ...loadPrefs(),
+      instrument: currentInst?.id || loadPrefs().instrument || 'saron-barung',
+      scale: currentScale,
+      playerName: el.playerNameInput?.value?.trim() || loadPrefs().playerName || '',
+      ...partial
+    };
+    localStorage.setItem(PREFS_KEY, JSON.stringify(next));
+  } catch (_) {}
+}
+
+function loadRoomSession() {
+  try {
+    const raw = sessionStorage.getItem(ROOM_SESSION_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (_) {
+    return null;
+  }
+}
+
+function saveRoomSession(session) {
+  try {
+    sessionStorage.setItem(ROOM_SESSION_KEY, JSON.stringify(session));
+  } catch (_) {}
+}
+
+function clearRoomSession() {
+  if (_guestRetryTimer) {
+    clearTimeout(_guestRetryTimer);
+    _guestRetryTimer = null;
+  }
+  try {
+    sessionStorage.removeItem(ROOM_SESSION_KEY);
+  } catch (_) {}
+}
+
 function showToast(msg, variant = 'gold') {
   const item = document.createElement('div');
   item.className = `studio-toast toast-${variant}`;
@@ -154,10 +205,33 @@ const mp = new MultiplayerManager({
       el.roomActiveBox.hidden = false;
       el.roomActiveCode.textContent = mp.roomCode;
       el.leaveRoomBtn.hidden = false;
+      _guestRetryCount = 0;
+      if (_guestRetryTimer) {
+        clearTimeout(_guestRetryTimer);
+        _guestRetryTimer = null;
+      }
+      if (mp.roomCode) {
+        saveRoomSession({
+          role: mp.isHost ? 'host' : 'guest',
+          roomCode: mp.roomCode,
+          playerName: mp.localProfile.name
+        });
+      }
     } else if (state === 'solo') {
       el.roomActiveBox.hidden = true;
       el.leaveRoomBtn.hidden = true;
     } else if (state === 'error') {
+      const saved = loadRoomSession();
+      if (!mp.isHost && saved?.role === 'guest' && saved.roomCode && _guestRetryCount < 4) {
+        _guestRetryCount += 1;
+        if (_guestRetryTimer) clearTimeout(_guestRetryTimer);
+        _guestRetryTimer = setTimeout(() => {
+          const latest = loadRoomSession();
+          if (latest?.role === 'guest' && latest.roomCode && !mp._manuallyLeaving) {
+            mp.joinRoom(latest.roomCode, latest.playerName || el.playerNameInput.value.trim() || 'Pemain');
+          }
+        }, 2500);
+      }
       showToast(text, 'warn');
     }
   },
@@ -292,6 +366,7 @@ async function selectInstrument(instId) {
   el.instSelect.value = inst.id;
   el.instTitle.textContent = inst.name;
   el.instDesc.textContent = inst.desc;
+  savePrefs({ instrument: inst.id });
 
   // Toggle laras buttons availability if instrument uses 'both'
   const hasBoth = Boolean(inst.scales.both);
@@ -358,6 +433,7 @@ function applyGlobalTune(cents, broadcast = true) {
 function setScale(scale) {
   if (scale !== 'slendro' && scale !== 'pelog') return;
   currentScale = scale;
+  savePrefs({ scale });
   el.scaleBtns.forEach((b) => {
     const active = b.dataset.scale === scale;
     b.classList.toggle('active', active);
@@ -851,7 +927,13 @@ async function init() {
   });
 
   el.leaveRoomBtn.addEventListener('click', () => {
+    _guestRetryCount = 99;
+    clearRoomSession();
     mp.leaveRoom();
+  });
+
+  el.playerNameInput?.addEventListener('change', () => {
+    savePrefs({ playerName: el.playerNameInput.value.trim() });
   });
 
   el.copyCodeBtn?.addEventListener('click', async () => {
@@ -877,17 +959,50 @@ async function init() {
     mp.reconnectIfNeeded();
   });
 
-  // Auto-select Saron Barung as default and background-preload kendhang metronome
+  // Restore saved instrument, laras & player name (fallback to Saron Barung Slendro)
+  const prefs = loadPrefs();
+  if (prefs.playerName && el.playerNameInput) {
+    el.playerNameInput.value = prefs.playerName;
+  }
+  if (prefs.scale === 'slendro' || prefs.scale === 'pelog') {
+    currentScale = prefs.scale;
+    el.scaleBtns.forEach((b) => {
+      const active = b.dataset.scale === currentScale;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+  const initialInst =
+    prefs.instrument && manifest.instruments.some((i) => i.id === prefs.instrument)
+      ? prefs.instrument
+      : 'saron-barung';
+
   engine.preloadMetronomeSamples();
-  await selectInstrument('saron-barung');
+  await selectInstrument(initialInst);
   renderRoster([]);
 
-  // Check ?room=PAN-XXXX invite parameter
+  // Check ?room=PAN-XXXX invite parameter vs saved room session across reload
   const params = new URLSearchParams(window.location.search);
   const inviteRoom = params.get('room');
-  if (inviteRoom) {
+  const savedSession = loadRoomSession();
+  const normalizedInvite = inviteRoom ? mp.normalizeCode(inviteRoom) : '';
+
+  if (inviteRoom && (!savedSession || normalizedInvite !== savedSession.roomCode)) {
     el.roomCodeInput.value = inviteRoom;
     if (!el.roomModal.open) el.roomModal.showModal();
+  } else if (savedSession?.roomCode) {
+    const restoreName =
+      savedSession.playerName ||
+      el.playerNameInput.value.trim() ||
+      (savedSession.role === 'host' ? 'Host Studio' : 'Pemain');
+    el.playerNameInput.value = restoreName;
+    el.roomCodeInput.value = savedSession.roomCode;
+    showToast(`Menyambung kembali ke room ${savedSession.roomCode}...`, 'gold');
+    if (savedSession.role === 'host') {
+      mp.createRoom(restoreName, savedSession.roomCode, { retryOnUnavailableId: true });
+    } else {
+      mp.joinRoom(savedSession.roomCode, restoreName);
+    }
   }
 }
 

@@ -62,6 +62,18 @@ export class MultiplayerManager {
       scale: 'slendro',
       isHost: false
     };
+
+    if (typeof window !== 'undefined') {
+      const releasePeerOnUnload = () => {
+        if (this.peer && !this.peer.destroyed) {
+          try {
+            this.peer.destroy();
+          } catch (_) {}
+        }
+      };
+      window.addEventListener('pagehide', releasePeerOnUnload);
+      window.addEventListener('beforeunload', releasePeerOnUnload);
+    }
   }
 
   setLocalProfile(partial) {
@@ -381,7 +393,11 @@ export class MultiplayerManager {
     });
   }
 
-  async createRoom(playerName, customCode) {
+  async createRoom(playerName, customCode, opts = {}) {
+    const retryOnUnavailableId = Boolean(opts.retryOnUnavailableId);
+    const maxUnavailableRetries = typeof opts.maxRetries === 'number' ? opts.maxRetries : 4;
+    const attempt = typeof opts._attempt === 'number' ? opts._attempt : 0;
+
     this.leaveRoom();
     const useRelay = await this._probeRelay();
     if (!useRelay && typeof window.Peer === 'undefined') {
@@ -396,7 +412,10 @@ export class MultiplayerManager {
     this.isHost = true;
     this.localProfile.name = playerName || 'Host Studio';
     this.localProfile.isHost = true;
-    this.onStatusChange('connecting', `Membuat room ${code}...`);
+    this.onStatusChange(
+      'connecting',
+      attempt > 0 ? `Menyambung ulang room ${code}...` : `Membuat room ${code}...`
+    );
 
     if (useRelay) {
       return this._createRelayRoom(code);
@@ -439,6 +458,22 @@ export class MultiplayerManager {
       peer.on('error', (err) => {
         if (this.peer !== peer) return;
         clearTimeout(timer);
+        if (retryOnUnavailableId && err?.type === 'unavailable-id' && attempt < maxUnavailableRetries) {
+          if (!settled) {
+            settled = true;
+            setTimeout(() => {
+              if (this._manuallyLeaving) {
+                resolve(null);
+                return;
+              }
+              this.createRoom(playerName, code, {
+                ...opts,
+                _attempt: attempt + 1
+              }).then(resolve);
+            }, 1200);
+          }
+          return;
+        }
         console.warn('[Multiplayer] Peer error:', err);
         this.onStatusChange('error', this._formatPeerError(err, code, 'create'));
         if (!settled) {
