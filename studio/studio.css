@@ -1011,9 +1011,6 @@ h1, h2, h3 {
   filter: drop-shadow(0 6px 12px var(--shadow-black-65));
 }
 
-.pad-bonang .pad-label-group,
-.pad-pencon .pad-label-group,
-.pad-gong .pad-label-group,
 .pad-kendhang .pad-label-group {
   position: absolute;
   display: flex;
@@ -1022,7 +1019,13 @@ h1, h2, h3 {
   justify-content: center;
   gap: 0;
   pointer-events: none;
-  max-width: 86%;
+  max-width: 62%;
+}
+
+.pad-bonang .pad-label-group,
+.pad-pencon .pad-label-group,
+.pad-gong .pad-label-group {
+  display: contents;
 }
 
 .pad-bonang .pad-label,
@@ -1039,48 +1042,62 @@ h1, h2, h3 {
   line-height: 1.1;
 }
 
-.pad-bonang .pad-label-group,
-.pad-pencon .pad-label-group {
-  background-color: var(--c-0-5-36-a88);
-  color: var(--gold-light);
-  border: 1px solid var(--gold-a35);
-  border-radius: var(--radius-chip);
-  min-width: 34px;
-  padding: 4px 8px;
+.pad-bonang .pad-label,
+.pad-bonang .pad-solmisasi,
+.pad-pencon .pad-label,
+.pad-pencon .pad-solmisasi,
+.pad-gong .pad-label,
+.pad-gong .pad-solmisasi {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  min-height: 20px;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: none;
+  line-height: 1.1;
 }
 
 .pad-bonang .pad-label,
 .pad-pencon .pad-label {
+  top: 14%;
+  background-color: var(--c-0-5-36-a88);
+  border: 1px solid var(--gold-a45);
+  border-radius: var(--radius-chip);
   color: var(--gold-light);
-  text-shadow: none;
+  font-size: 0.88rem;
 }
 
 .pad-bonang .pad-solmisasi,
 .pad-pencon .pad-solmisasi {
-  color: var(--gold-light-a82);
-}
-
-.pad-gong .pad-label-group {
-  top: 54%;
-  background-color: var(--c-0-5-36-a88);
-  color: var(--gold-light);
-  border-radius: var(--radius-sm);
-  padding: 4px 8px;
-}
-
-.pad-gong .pad-label {
-  color: var(--gold-light);
-  font-size: 0.84rem;
-  text-shadow: none;
-}
-
-.pad-gong .pad-solmisasi {
+  bottom: 14%;
+  background-color: var(--navy-deep);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
   color: var(--gold-light-a82);
   font-size: 0.72rem;
 }
 
-.pad-kendhang .pad-label-group {
-  max-width: 62%;
+.pad-gong .pad-label {
+  top: 26%;
+  background-color: var(--c-0-5-36-a88);
+  border: 1px solid var(--gold-a45);
+  border-radius: var(--radius-chip);
+  color: var(--gold-light);
+  font-size: 0.84rem;
+}
+
+.pad-gong .pad-solmisasi {
+  bottom: 12%;
+  background-color: var(--navy-deep);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--gold-light-a82);
+  font-size: 0.72rem;
 }
 
 .pad-kendhang .pad-label {
