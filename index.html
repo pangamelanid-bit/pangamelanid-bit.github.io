@@ -707,26 +707,25 @@
       width: fit-content;
     }
 
-    /* RIGHT SIDE: GAMELAN VISUAL STAGE + ORNATE FLOATING AUDIO DECK */
+    /* RIGHT SIDE: GAMELAN VISUAL STAGE + COMPACT AUDIO STRIP */
     .hero-stage {
       position: relative;
-      min-height: 490px;
+      min-height: auto;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center;
       z-index: 3;
     }
 
     .stage-gamelan-figure {
       position: relative;
       z-index: 2;
-      margin: 16px auto 0;
+      margin: 0 auto;
       width: 100%;
-      max-width: 480px;
-      padding: 28px;
-      border: 1px solid var(--gold-a32);
-      border-radius: var(--radius-md);
-      background-color: var(--white-a04);
+      max-width: 560px;
+      padding: 0;
+      border: none;
+      background-color: transparent;
       transform: translateY(0);
     }
     .stage-gamelan-figure img {
@@ -737,36 +736,37 @@
       filter: contrast(1.03);
     }
 
-    /* Interactive Sound Demo Deck Integrated into Hero Stage with Generous Breathing Room */
+    /* Compact Sound Demo Strip Subordinate to Hero Illustration */
     .hero-showcase {
       position: relative;
       z-index: 4;
-      margin-top: 20px;
-      background: var(--navy-card);
+      margin-top: 16px;
+      background: var(--c-0-3-28-a65);
       color: var(--white);
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
-      padding: 24px;
-      box-shadow: var(--edge-light);
+      padding: 12px 16px;
+      box-shadow: none;
     }
     .showcase-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
+      gap: 12px;
+      margin-bottom: 8px;
     }
     .showcase-brand-left {
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
     }
     .showcase-emblem {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       padding: 0;
       border-radius: var(--radius-pill);
-      border: 1px solid var(--gold);
+      border: 1px solid var(--gold-a45);
       background: var(--navy-royal);
       color: var(--gold);
       display: grid;
@@ -775,16 +775,16 @@
     }
     .showcase-title {
       font-family: var(--font-display);
-      font-size: 1.06rem;
+      font-size: 0.92rem;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--white);
     }
     .showcase-sub {
       font-family: var(--font-body);
-      font-size: 0.78rem;
-      color: var(--gold);
-      font-weight: 500;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 400;
     }
 
     /* VISUALIZER */
@@ -793,12 +793,13 @@
       align-items: center;
       justify-content: center;
       gap: 4px;
-      height: 36px;
-      min-width: 120px;
-      background: var(--c-0-3-28-a65);
+      height: 28px;
+      min-width: 88px;
+      background: var(--navy-deep);
       border-radius: var(--radius-sm);
-      padding: 8px 12px;
+      padding: 4px 8px;
       border: 1px solid var(--line);
+      flex-shrink: 0;
     }
     .visualizer-bar {
       width: 4px;
@@ -831,24 +832,45 @@
 
     .demo-tracks-grid {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 8px;
     }
     .demo-track {
       font-family: var(--font-body);
+      flex: 1 1 auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 16px;
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 8px 12px;
       border-radius: var(--radius-sm);
       background: var(--white-a04);
       border: 1px solid var(--line);
       cursor: pointer;
       text-align: start;
       color: var(--white);
+      min-width: 0;
       white-space: nowrap;
       transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .hero-showcase .demo-track-cat,
+    .hero-showcase .demo-track-num {
+      display: none;
+    }
+    .hero-showcase .demo-track-left {
+      min-width: 0;
+      overflow: hidden;
+    }
+    .hero-showcase .demo-track-info {
+      min-width: 0;
+      overflow: hidden;
+    }
+    .hero-showcase .demo-track-name {
+      font-size: 0.78rem;
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .demo-track:hover, .demo-track.active-track {
       background: var(--gold-a16);
@@ -2760,7 +2782,7 @@
       .container { width: calc(100% - 32px); }
       .ornament-corners { display: none; }
       .seam-ornament-band { height: 36px; padding: 0 16px; }
-      .stage-gamelan-figure { padding: 24px; }
+      .stage-gamelan-figure { padding: 0; }
       .stage-ornament-corner { width: 16px; height: 16px; }
       body.dock-open { padding-bottom: 160px; }
       .hero-stage { margin-top: 20px; min-height: auto; }
@@ -2792,14 +2814,17 @@
         line-height: 1.74;
       }
       .hero-showcase {
-        padding: 16px;
+        padding: 12px;
         margin-top: 12px;
+      }
+      .demo-tracks-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
       .demo-track {
         padding: 8px 12px;
       }
-      .showcase-top { flex-direction: column; align-items: flex-start; }
-      .visualizer { width: 100%; }
+      .showcase-top { flex-direction: row; align-items: center; }
+      .visualizer { width: auto; min-width: 72px; }
 
       .services-cards-row,
       .portfolio-cards-track,
@@ -3163,26 +3188,14 @@
           </div>
         </div>
 
-        <!-- Right Column: Asymmetric Gamelan Stage + Audio Preview -->
+        <!-- Right Column: Frameless Gamelan Illustration + Compact Audio Strip -->
         <div class="hero-stage hero-visual-panel">
           <figure class="stage-gamelan-figure">
-            <div class="stage-ornament-corners" aria-hidden="true">
-              <svg class="stage-ornament-corner tl" viewBox="0 0 24 24"><use href="#pg-corner-sulur"/></svg>
-              <svg class="stage-ornament-corner tr" viewBox="0 0 24 24"><use href="#pg-corner-sulur"/></svg>
-              <svg class="stage-ornament-corner bl" viewBox="0 0 24 24"><use href="#pg-corner-sulur"/></svg>
-              <svg class="stage-ornament-corner br" viewBox="0 0 24 24"><use href="#pg-corner-sulur"/></svg>
-            </div>
             <img src="images/optimized/studio-gamelan-daw.webp" width="960" height="536" fetchpriority="high" alt="Studio Gamelan DAW Berornamen Emas">
           </figure>
 
-          <!-- Interactive Sound Demo Preview Deck -->
-          <div class="hero-showcase ornament-host" role="group" aria-label="Pemutar Contoh Audio PAN Gamelan">
-            <div class="ornament-corners" aria-hidden="true">
-              <svg class="ornament-corner tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 16V4a2 2 0 0 1 2-2h12"/><path d="M6 12V6h6"/><circle cx="5.5" cy="5.5" r="1.4" fill="currentColor"/></svg>
-              <svg class="ornament-corner tr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 16V4a2 2 0 0 1 2-2h12"/><path d="M6 12V6h6"/><circle cx="5.5" cy="5.5" r="1.4" fill="currentColor"/></svg>
-              <svg class="ornament-corner bl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 16V4a2 2 0 0 1 2-2h12"/><path d="M6 12V6h6"/><circle cx="5.5" cy="5.5" r="1.4" fill="currentColor"/></svg>
-              <svg class="ornament-corner br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 16V4a2 2 0 0 1 2-2h12"/><path d="M6 12V6h6"/><circle cx="5.5" cy="5.5" r="1.4" fill="currentColor"/></svg>
-            </div>
+          <!-- Interactive Sound Demo Preview Strip -->
+          <div class="hero-showcase" role="group" aria-label="Pemutar Contoh Audio PAN Gamelan">
             <div class="showcase-top">
               <div class="showcase-brand-left">
                 <button type="button" class="showcase-emblem sonic-logo" aria-label="Putar audio logo PAN Gamelan" title="Klik untuk mendengar audio logo">
