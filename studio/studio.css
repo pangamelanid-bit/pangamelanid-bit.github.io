@@ -700,16 +700,16 @@ h1, h2, h3 {
   flex: 1;
   width: 100%;
   min-width: 0;
-  min-height: 320px;
-  max-height: 560px;
+  min-height: 290px;
+  max-height: 460px;
   height: auto;
-  padding: 28px;
+  padding: 24px 28px;
   border-radius: var(--radius-lg);
   background-color: var(--rack-dark);
   background-image: linear-gradient(180deg, var(--rack-wood-top) 0%, var(--rack-dark) 100%);
   color: var(--white);
   border: 1.5px solid var(--gold-a45);
-  box-shadow: inset 0 0 36px var(--shadow-black-75);
+  box-shadow: inset 0 1px 0 var(--gold-a14), inset 0 0 40px var(--shadow-black-75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -872,6 +872,14 @@ h1, h2, h3 {
 }
 
 @media (min-width: 769px) {
+  .pads-grid.layout-bilah:not(.is-dense) {
+    gap: 12px;
+  }
+  .pads-grid.layout-bilah:not(.is-dense) .pad-bilah {
+    flex: 0 1 98px;
+    min-width: 76px;
+    max-width: 108px;
+  }
   .pads-grid.layout-bilah.is-dense {
     justify-content: safe center;
     gap: 4px;
@@ -881,6 +889,29 @@ h1, h2, h3 {
   .pads-grid.layout-bilah.is-dense .pad-bilah {
     flex: 1 0 44px;
     min-width: 44px;
+  }
+  .pads-grid.layout-bonang {
+    gap: 20px;
+  }
+  .bonang-row {
+    gap: 16px;
+  }
+  .pad-bonang {
+    width: clamp(92px, 7.2vw, 112px);
+    height: clamp(92px, 7.2vw, 112px);
+  }
+  .pad-pencon {
+    width: clamp(118px, 8.8vw, 140px);
+    height: clamp(118px, 8.8vw, 140px);
+  }
+  .pad-kendhang {
+    width: clamp(120px, 9vw, 144px);
+    height: clamp(120px, 9vw, 144px);
+  }
+  .pads-grid.layout-pencon,
+  .pads-grid.layout-gong,
+  .pads-grid.layout-kendhang {
+    gap: 20px;
   }
 }
 
@@ -1012,7 +1043,9 @@ h1, h2, h3 {
 .pad-pencon .pad-label-group {
   background-color: var(--c-0-5-36-a88);
   color: var(--gold-light);
+  border: 1px solid var(--gold-a35);
   border-radius: var(--radius-chip);
+  min-width: 34px;
   padding: 4px 8px;
 }
 
@@ -1409,7 +1442,7 @@ h1, h2, h3 {
     gap: 8px;
   }
   .dock-group input[type="range"] {
-    width: 52px;
+    width: 72px;
   }
   .dock-label {
     font-size: 0.78rem;
@@ -1745,7 +1778,7 @@ h1, h2, h3 {
   background-color: var(--navy-card);
   color: var(--white);
   border-bottom: 1px solid var(--line-gold);
-  padding: 12px 16px;
+  padding: 8px 12px;
 }
 
 .rotate-prompt-card {
@@ -1761,16 +1794,16 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .rotate-prompt-card h2 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 0.94rem;
   font-weight: 600;
   font-style: normal;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--gold);
   text-wrap: balance;
 }
@@ -1778,8 +1811,8 @@ h1, h2, h3 {
 .rotate-prompt-card p {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 0.84rem;
-  line-height: 1.45;
+  font-size: 0.76rem;
+  line-height: 1.35;
   color: var(--white-soft);
   text-wrap: pretty;
   max-width: 48ch;
@@ -1787,8 +1820,8 @@ h1, h2, h3 {
 
 .rotate-phone-icon svg {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   animation: phoneTilt 2.2s ease-in-out infinite;
 }
 
@@ -1806,6 +1839,47 @@ h1, h2, h3 {
 @media (max-width: 768px) and (orientation: portrait) {
   .rotate-prompt:not(.is-dismissed) {
     display: block;
+  }
+  .studio-controls {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    width: 100%;
+    gap: 8px;
+    align-items: center;
+  }
+  .studio-select {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .scale-switch {
+    justify-self: start;
+    gap: 4px;
+  }
+  .scale-btn {
+    padding: 4px 12px;
+    font-size: 0.78rem;
+  }
+  .room-pill {
+    width: 100%;
+    justify-content: center;
+    padding-inline: 8px;
+    font-size: 0.78rem;
+    gap: 8px;
+  }
+  .instrument-rack {
+    padding: 16px 8px;
+    min-height: 230px;
+  }
+  .pads-grid.layout-bilah:not(.is-dense) {
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 0;
+  }
+  .pads-grid.layout-bilah:not(.is-dense) .pad-bilah {
+    flex: 1 1 0;
+    min-width: 34px;
+    max-width: 64px;
+    padding: 12px 4px;
   }
 }
 
@@ -1926,11 +2000,34 @@ h1, h2, h3 {
   }
   .studio-dock {
     padding: 12px;
+    gap: 8px;
+  }
+  .dock-group input[type="range"] {
+    flex: 1 1 120px;
+  }
+  .dock-group:nth-child(2) {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+  }
+  .dock-group:nth-child(2) #masterVol {
+    grid-column: 2 / -1;
+    width: 100%;
+  }
+  .dock-group:nth-child(2) #tuneRange {
+    grid-column: 2;
+    width: 100%;
+  }
+  .dock-group:nth-child(2) #recordBtn {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
   }
   .dock-group[aria-label="Isyarat Cepat Studio"] {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 8px;
+    gap: 4px;
     width: 100%;
   }
   .emote-btn {
