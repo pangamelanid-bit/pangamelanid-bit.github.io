@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PAN Gamelan Studio: Studio karawitan gamelan Jawa interaktif untuk bermain bersama secara online maupun solo.">
+  <title>PAN Gamelan Studio: Main Bersama Online</title>
+  <link rel="icon" type="image/png" href="logo-pan-gamelan.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600&family=Red+Hat+Text:wght@400;500&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="studio/studio.css">
+</head>
+<body>
+  <canvas id="ribbonStudioCanvas" class="ribbon-night-canvas" aria-hidden="true"></canvas>
+  <a href="#stageContainer" class="skip-link visually-hidden">Langsung ke panggung instrumen</a>
+  <div class="studio-shell">
+    <!-- TOP BAR -->
+    <header class="studio-topbar">
+      <a class="studio-brand" href="index.html" title="Kembali ke Beranda PAN Gamelan">
+        <div class="brand-logo-wrap">
+          <img src="logo-pan-gamelan.png" alt="Logo PAN Gamelan" width="44" height="44">
+        </div>
+        <div>
+          <div class="studio-brand-title">PAN GAMELAN STUDIO</div>
+          <div class="studio-brand-sub">Kembali ke Beranda</div>
+        </div>
+      </a>
+
+      <div class="studio-controls">
+        <select id="instSelect" class="studio-select" aria-label="Pilih Instrumen Gamelan">
+          <option value="saron-barung" selected>Saron Barung</option>
+        </select>
+
+        <div class="scale-switch" role="group" aria-label="Pilih Laras">
+          <button type="button" class="scale-btn active" data-scale="slendro" aria-pressed="true">Slendro</button>
+          <button type="button" class="scale-btn" data-scale="pelog" aria-pressed="false">Pelog</button>
+        </div>
+
+        <button type="button" id="openRoomBtn" class="room-pill" data-state="solo" aria-label="Pengaturan Room Multiplayer">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="status-text" id="roomStatusPillText">Mode Solo (Offline)</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ENSEMBLE ROSTER -->
+    <section class="roster-bar" id="rosterBar" aria-label="Pemain di Studio"></section>
+
+    <!-- MAIN INSTRUMENT STAGE -->
+    <main class="stage-card">
+      <div class="stage-header">
+        <div class="stage-title-wrap">
+          <h1 id="instTitle">Saron Barung</h1>
+          <p id="instDesc">Instrumen melodi pokok berbilah perunggu dengan register tengah yang lantang.</p>
+        </div>
+        <div class="stage-meta-actions">
+          <span class="load-badge" id="loadBadge" data-ready="false" aria-live="polite">Siap</span>
+          <button type="button" class="damp-btn is-active" id="saronBarungBilahBtn" hidden aria-pressed="true" title="Pilih Saron Barung Pelog 7 bilah (1 sampai 7) atau 12 bilah (6 rendah sampai 3 tinggi)">
+            Bilah: 12
+          </button>
+          <button type="button" class="damp-btn" id="bonangOrderBtn" hidden aria-pressed="false" title="Ubah susunan pencon Bonang">
+            Susunan: Tradisional
+          </button>
+          <button type="button" class="damp-btn" id="bonangPathetBtn" hidden aria-pressed="false" title="Tukar posisi pencon 1 & 7 antara Pelog Nem/Lima dan Pelog Barang">
+            Pencon 1/7: Nem/Lima
+          </button>
+          <button type="button" class="damp-btn is-active" id="panerusanKeyModeBtn" hidden aria-pressed="true" title="Ubah tata letak tombol keyboard Panerusan: Split 2 Tangan (Kiri Z-B/A-G, Kanan H-;/Y-P) atau Standar">
+            Keyboard: Split 2 Tangan
+          </button>
+          <button type="button" class="damp-btn" id="panerusanPathetBtn" hidden aria-pressed="false" title="Khusus Panerusan Pelog: ganti rancakan / bilah antara Pelog Bem (tanpa 7) dan Pelog Barang (7 menggantikan 1)">
+            Pelog: Bem
+          </button>
+          <button type="button" class="damp-btn" id="gambangGembyangBtn" hidden aria-pressed="false" title="Khusus Gambang: bunyikan 2 bilah 1 oktaf (gembyang) secara bersamaan, atau tahan tombol Shift saat bermain">
+            Gembyang: OFF
+          </button>
+          <button type="button" class="damp-btn is-active" id="autoMithetBtn" aria-pressed="true" title="Otomatis meredam nada sebelumnya seperti tabuhan gamelan asli">
+            Auto-Mithet: ON
+          </button>
+          <button type="button" class="damp-btn" id="dampBtn" title="Redam bunyi (atau tekan Spasi di keyboard)">
+            Redam (Spasi)
+          </button>
+        </div>
+      </div>
+
+      <div class="stage-container" id="stageContainer" tabindex="-1">
+        <div class="instrument-rack rack-bilah inst-saron-barung">
+          <div class="rack-ornament rack-ornament-tl" aria-hidden="true"></div>
+          <div class="rack-ornament rack-ornament-tr" aria-hidden="true"></div>
+          <div class="rack-ornament rack-ornament-bl" aria-hidden="true"></div>
+          <div class="rack-ornament rack-ornament-br" aria-hidden="true"></div>
+          <div class="pads-grid layout-bilah" tabindex="0" role="region" aria-label="Deretan Bilah Instrumen">
+            <button type="button" class="gamelan-pad pad-bilah" style="--bilah-height: 100%;" aria-label="Saron Barung nada 1"><span class="pad-glow" aria-hidden="true"></span><span class="pad-label-group"><span class="pad-label">1</span><span class="pad-solmisasi">Ji</span></span><span class="pad-key" aria-hidden="true">A</span></button>
+            <button type="button" class="gamelan-pad pad-bilah" style="--bilah-height: 96.3333%;" aria-label="Saron Barung nada 2"><span class="pad-glow" aria-hidden="true"></span><span class="pad-label-group"><span class="pad-label">2</span><span class="pad-solmisasi">Ro</span></span><span class="pad-key" aria-hidden="true">S</span></button>
+            <button type="button" class="gamelan-pad pad-bilah" style="--bilah-height: 92.6667%;" aria-label="Saron Barung nada 3"><span class="pad-glow" aria-hidden="true"></span><span class="pad-label-group"><span class="pad-label">3</span><span class="pad-solmisasi">Lu</span></span><span class="pad-key" aria-hidden="true">D</span></button>
+            <button type="button" class="gamelan-pad pad-bilah" style="--bilah-height: 89%;" aria-label="Saron Barung nada 4"><span class="pad-glow" aria-hidden="true"></span><span class="pad-label-group"><span class="pad-label">4</span><span class="pad-solmisasi">Pat</span></span><span class="pad-key" aria-hidden="true">F</span></button>
+            <button type="button" class="gamelan-pad pad-bilah" style="--bilah-height: 85.3333%;" aria-label="Saron Barung nada 5"><span class="pad-glow" aria-hidden="true"></span><span class="pad-label-group"><span class="pad-label">5</span><span class="pad-solmisasi">Ma</span></span><span class="pad-key" aria-hidden="true">G</span></button>
+            <button type="button" class="gamelan-pad pad-bilah" style="--bilah-height: 81.6667%;" aria-label="Saron Barung nada 6"><span class="pad-glow" aria-hidden="true"></span><span class="pad-label-group"><span class="pad-label">6</span><span class="pad-solmisasi">Nem</span></span><span class="pad-key" aria-hidden="true">H</span></button>
+            <button type="button" class="gamelan-pad pad-bilah" style="--bilah-height: 78%;" aria-label="Saron Barung nada 7"><span class="pad-glow" aria-hidden="true"></span><span class="pad-label-group"><span class="pad-label">7</span><span class="pad-solmisasi">Pi</span></span><span class="pad-key" aria-hidden="true">J</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="stage-scroll-cue" id="stageScrollCue" hidden>
+        <span class="scroll-cue-arrows" aria-hidden="true">&#8592; &#8594;</span>
+        <span class="scroll-cue-text">Geser bilah ke kanan/kiri untuk melihat seluruh nada</span>
+      </div>
+    </main>
+
+    <!-- BOTTOM STUDIO DOCK -->
+    <footer class="studio-dock">
+      <div class="dock-group">
+        <label class="dock-label" for="bpmRange">Ketukan:</label>
+        <input type="range" id="bpmRange" min="40" max="140" value="72" aria-label="Tempo BPM" aria-valuetext="72 BPM">
+        <span class="dock-label" id="bpmVal">72 BPM</span>
+        <button type="button" class="btn-studio" id="metroToggleBtn">Mulai Ketukan</button>
+        <div class="gatra-beats" id="gatraBeats" aria-label="Indikator 4 Ketukan Gatra">
+          <span class="gatra-dot" data-beat="1">1</span>
+          <span class="gatra-dot" data-beat="2">2</span>
+          <span class="gatra-dot" data-beat="3">3</span>
+          <span class="gatra-dot is-seleh" data-beat="4">4</span>
+        </div>
+      </div>
+
+      <div class="dock-group">
+        <label class="dock-label" for="masterVol">Vol:</label>
+        <input type="range" id="masterVol" min="0" max="1.2" step="0.05" value="0.9" aria-label="Volume Utama" aria-valuetext="90%">
+        <label class="dock-label" for="tuneRange">Tune:</label>
+        <input type="range" id="tuneRange" min="-600" max="600" step="10" value="0" aria-label="Pitch / Tune Global (Cents)" aria-valuetext="0 cents">
+        <button type="button" class="tune-reset-btn" id="tuneResetBtn" aria-label="Reset tune ke 0 cent" title="Klik untuk reset pitch ke 0 ct (nada asli)">0 ct</button>
+        <button type="button" class="btn-record" id="recordBtn" aria-label="Rekam Sesi Audio">
+          <span class="rec-dot" aria-hidden="true"></span>
+          <span class="rec-label">Rekam Sesi</span>
+          <span id="recordTime" aria-hidden="true">00:00</span>
+        </button>
+      </div>
+
+      <div class="dock-group" aria-label="Isyarat Cepat Studio">
+        <button type="button" class="emote-btn" data-emote="Mulai!">Mulai!</button>
+        <button type="button" class="emote-btn" data-emote="Pelan">Pelan</button>
+        <button type="button" class="emote-btn" data-emote="Cepat">Cepat</button>
+        <button type="button" class="emote-btn" data-emote="Suwuk!">Suwuk!</button>
+        <button type="button" class="emote-btn" data-emote="Mantap!">Mantap!</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- MULTIPLAYER ROOM MODAL -->
+  <dialog class="room-modal" id="roomModal" aria-labelledby="roomModalTitle">
+    <div class="room-modal-card">
+      <div class="room-modal-head">
+        <h2 id="roomModalTitle">Studio Bersama (Online)</h2>
+        <button type="button" class="modal-close" id="closeRoomBtn" aria-label="Tutup">&times;</button>
+      </div>
+
+      <div class="form-field">
+        <label for="playerNameInput">Nama Pemain Anda</label>
+        <input type="text" id="playerNameInput" maxlength="20" placeholder="Contoh: Mas Tyo" value="Pemain 1" autocomplete="nickname" autofocus>
+      </div>
+
+      <div class="form-field">
+        <label for="roomCodeInput">Kode Room</label>
+        <span class="field-hint" id="roomCodeHint">Kosongkan saat Buat, atau ketik 4 angka (mis. 4821) saat Gabung.</span>
+        <input type="text" id="roomCodeInput" maxlength="14" placeholder="Contoh: PAN-4821 atau 4821" aria-describedby="roomCodeHint" autocomplete="off">
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-gold-solid" id="createRoomBtn">Buat Room Baru</button>
+        <button type="button" class="btn-outline-gold" id="joinRoomBtn">Gabung Room</button>
+      </div>
+
+      <p class="room-modal-status" id="roomModalStatus" role="status" aria-live="polite" hidden></p>
+
+      <div class="room-active-box" id="roomActiveBox" hidden>
+        <div>
+          <div class="room-active-label">Room Aktif (cukup bagikan kode ini):</div>
+          <strong id="roomActiveCode" class="room-active-code">PAN-0000</strong>
+        </div>
+        <div class="room-active-actions">
+          <button type="button" class="btn-outline-gold btn-copy-invite" id="copyCodeBtn">
+            Salin Kode
+          </button>
+          <button type="button" class="btn-outline-gold btn-copy-invite" id="copyInviteBtn">
+            Salin Link
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="btn-outline-gold btn-leave-room" id="leaveRoomBtn" hidden>
+        Keluar Room (Kembali ke Solo)
+      </button>
+    </div>
+  </dialog>
+
+  <!-- MOBILE PORTRAIT ROTATE PROMPT -->
+  <div class="rotate-prompt" id="rotatePrompt" role="region" aria-labelledby="rotatePromptTitle">
+    <div class="rotate-prompt-card">
+      <div class="rotate-phone-icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="60" height="60" fill="none">
+          <rect x="18" y="8" width="28" height="48" rx="5" stroke="var(--gold)" stroke-width="2.5" fill="var(--gold-a14)"/>
+          <circle cx="32" cy="49" r="2" fill="var(--gold)"/>
+          <path d="M49 20 C56 27, 56 38, 49 44" stroke="var(--status-ok-bright)" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M52 40 L49 44 L45 41" stroke="var(--status-ok-bright)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 id="rotatePromptTitle">Putar Ponsel ke Mode Landscape</h2>
+      <p>Putar layar ponsel Anda ke posisi mendatar (landscape) sebelum bermain agar seluruh bilah &amp; pencon gamelan tampil penuh tanpa perlu menggeser.</p>
+      <button type="button" class="btn-outline-gold" id="dismissRotateBtn">Tetap Lanjut dalam Mode Portrait</button>
+    </div>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+
+  <!-- PeerJS for zero-backend WebRTC P2P multiplayer -->
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script type="module" src="studio/studio-app.js"></script>
+  <script>
+    (function () {
+      // Sync dock range slider CSS progress tokens (--attr-min, --attr-max, --control-value)
+      const sliders = Array.from(document.querySelectorAll('.studio-dock input[type="range"]'));
+      function syncSlider(input) {
+        if (!input) return;
+        input.style.setProperty('--attr-min', input.min !== '' ? input.min : '0');
+        input.style.setProperty('--attr-max', input.max !== '' ? input.max : '100');
+        input.style.setProperty('--control-value', input.value);
+        if (input.id === 'bpmRange') {
+          input.setAttribute('aria-valuetext', `${input.value} BPM`);
+        } else if (input.id === 'masterVol') {
+          input.setAttribute('aria-valuetext', `${Math.round(parseFloat(input.value) * 100)}%`);
+        } else if (input.id === 'tuneRange') {
+          const n = Number(input.value);
+          input.setAttribute('aria-valuetext', `${n > 0 ? '+' + n : n} cents`);
+        }
+      }
+      function syncAllSliders() {
+        sliders.forEach(syncSlider);
+      }
+      sliders.forEach((input) => {
+        syncSlider(input);
+        input.addEventListener('input', () => syncSlider(input));
+        input.addEventListener('change', () => syncSlider(input));
+      });
+      const tuneResetBtn = document.getElementById('tuneResetBtn');
+      const tuneRange = document.getElementById('tuneRange');
+      const bpmVal = document.getElementById('bpmVal');
+      const bpmRange = document.getElementById('bpmRange');
+      if (tuneResetBtn && tuneRange) {
+        tuneResetBtn.addEventListener('click', () => requestAnimationFrame(() => syncSlider(tuneRange)));
+        new MutationObserver(() => syncSlider(tuneRange)).observe(tuneResetBtn, { childList: true, characterData: true, subtree: true });
+      }
+      if (bpmVal && bpmRange) {
+        new MutationObserver(() => syncSlider(bpmRange)).observe(bpmVal, { childList: true, characterData: true, subtree: true });
+      }
+      window.addEventListener('DOMContentLoaded', syncAllSliders);
+
+      // Deep Navy + faint Gold acoustic resonance contour canvas (Furrow)
+      const c = document.getElementById('ribbonStudioCanvas');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      if (!ctx) return;
+      const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+      let reduced = motionQuery ? motionQuery.matches : false;
+      let w = 0, h = 0, raf = 0, t = 0;
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = window.innerWidth;
+        h = window.innerHeight;
+        c.width = w * dpr;
+        c.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        draw();
+      }
+
+      function draw() {
+        ctx.fillStyle = '#000529';
+        ctx.fillRect(0, 0, w, h);
+
+        const cx = w * 0.5;
+        const cy = h * 0.52;
+        const maxR = Math.hypot(w, h) * 0.56;
+        ctx.lineWidth = 1;
+
+        // Concentric acoustic resonance contours
+        const ringCount = 7;
+        for (let i = 1; i <= ringCount; i++) {
+          const baseR = (maxR / ringCount) * i;
+          const isGold = i === 3 || i === 6;
+          ctx.strokeStyle = isGold ? 'rgba(244, 196, 48, 0.08)' : 'rgba(180, 194, 224, 0.07)';
+          ctx.beginPath();
+          const steps = 96;
+          for (let s = 0; s <= steps; s++) {
+            const ang = (s / steps) * Math.PI * 2;
+            const wave = Math.sin(ang * 3 + t * 0.35 + i * 0.9) * (6 + i * 1.4)
+              + Math.cos(ang * 2 - t * 0.25 + i * 0.5) * 4;
+            const rx = (baseR + wave) * 1.15;
+            const ry = (baseR + wave) * 0.72;
+            const px = cx + Math.cos(ang) * rx;
+            const py = cy + Math.sin(ang) * ry;
+            if (s === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.stroke();
+        }
+
+        // Subtle horizontal harmonic contour lines
+        for (let j = 0; j < 4; j++) {
+          ctx.beginPath();
+          ctx.strokeStyle = j === 1 ? 'rgba(244, 196, 48, 0.065)' : 'rgba(7, 25, 120, 0.38)';
+          const baseY = h * (0.18 + j * 0.22);
+          for (let x = 0; x <= w; x += 28) {
+            const y = baseY
+              + Math.sin(x * 0.0032 + t * 0.28 + j * 1.4) * 11
+              + Math.cos(x * 0.0068 - t * 0.18 + j) * 4;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      }
+
+      function tick() {
+        t += 0.012;
+        draw();
+        raf = requestAnimationFrame(tick);
+      }
+
+      function syncAnimation() {
+        if (document.hidden || reduced) {
+          if (raf) {
+            cancelAnimationFrame(raf);
+            raf = 0;
+          }
+          draw();
+        } else if (!raf) {
+          raf = requestAnimationFrame(tick);
+        }
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+      if (motionQuery && motionQuery.addEventListener) {
+        motionQuery.addEventListener('change', (e) => {
+          reduced = e.matches;
+          syncAnimation();
+        });
+      }
+      document.addEventListener('visibilitychange', syncAnimation);
+      resize();
+      syncAnimation();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1750 @@
+{
+  "instruments": [
+    {
+      "id": "saron-barung",
+      "name": "Saron Barung",
+      "category": "Balungan",
+      "layout": "bilah",
+      "canDamp": true,
+      "desc": "Instrumen melodi pokok berbilah perunggu dengan register tengah yang lantang.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "6l",
+            "label": "6̣",
+            "key": "A",
+            "url": "audio/studio/slendro/saron-barung/6l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1",
+            "key": "S",
+            "url": "audio/studio/slendro/saron-barung/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "D",
+            "url": "audio/studio/slendro/saron-barung/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "F",
+            "url": "audio/studio/slendro/saron-barung/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/slendro/saron-barung/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/slendro/saron-barung/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "J",
+            "url": "audio/studio/slendro/saron-barung/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2̇",
+            "key": "K",
+            "url": "audio/studio/slendro/saron-barung/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3̇",
+            "key": "L",
+            "url": "audio/studio/slendro/saron-barung/3h.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "6l",
+            "label": "6̣",
+            "key": "Z",
+            "detune": -403,
+            "url": "audio/studio/pelog/saron-barung/1.pga"
+          },
+          {
+            "id": "7l",
+            "label": "7̣",
+            "key": "X",
+            "detune": -254,
+            "url": "audio/studio/pelog/saron-barung/1.pga"
+          },
+          {
+            "id": "1",
+            "label": "1",
+            "key": "A",
+            "url": "audio/studio/pelog/saron-barung/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "S",
+            "url": "audio/studio/pelog/saron-barung/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "D",
+            "url": "audio/studio/pelog/saron-barung/3.pga"
+          },
+          {
+            "id": "4",
+            "label": "4",
+            "key": "F",
+            "url": "audio/studio/pelog/saron-barung/4.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/pelog/saron-barung/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/pelog/saron-barung/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7",
+            "key": "J",
+            "url": "audio/studio/pelog/saron-barung/7.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "K",
+            "detune": 254,
+            "url": "audio/studio/pelog/saron-barung/7.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2̇",
+            "key": "L",
+            "detune": 396,
+            "url": "audio/studio/pelog/saron-barung/7.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3̇",
+            "key": ";",
+            "detune": 549,
+            "url": "audio/studio/pelog/saron-barung/7.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "saron-demung",
+      "name": "Saron Demung",
+      "category": "Balungan",
+      "layout": "bilah",
+      "canDamp": true,
+      "desc": "Saron berukuran paling besar dengan nada rendah yang dalam dan berwibawa.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "6l",
+            "label": "6̣",
+            "key": "A",
+            "url": "audio/studio/slendro/saron-demung/6l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1",
+            "key": "S",
+            "url": "audio/studio/slendro/saron-demung/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "D",
+            "url": "audio/studio/slendro/saron-demung/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "F",
+            "url": "audio/studio/slendro/saron-demung/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/slendro/saron-demung/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/slendro/saron-demung/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "J",
+            "url": "audio/studio/slendro/saron-demung/1h.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "1",
+            "label": "1",
+            "key": "A",
+            "url": "audio/studio/pelog/saron-demung/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "S",
+            "url": "audio/studio/pelog/saron-demung/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "D",
+            "url": "audio/studio/pelog/saron-demung/3.pga"
+          },
+          {
+            "id": "4",
+            "label": "4",
+            "key": "F",
+            "url": "audio/studio/pelog/saron-demung/4.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/pelog/saron-demung/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/pelog/saron-demung/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7",
+            "key": "J",
+            "url": "audio/studio/pelog/saron-demung/7.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "saron-peking",
+      "name": "Saron Peking",
+      "category": "Balungan",
+      "layout": "bilah",
+      "canDamp": true,
+      "desc": "Saron terkecil bernada tinggi yang mengisi variasi ritmis cepat.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "6l",
+            "label": "6̣",
+            "key": "A",
+            "url": "audio/studio/slendro/saron-peking/6l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1",
+            "key": "S",
+            "url": "audio/studio/slendro/saron-peking/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "D",
+            "url": "audio/studio/slendro/saron-peking/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "F",
+            "url": "audio/studio/slendro/saron-peking/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/slendro/saron-peking/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/slendro/saron-peking/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "J",
+            "url": "audio/studio/slendro/saron-peking/1h.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "1",
+            "label": "1",
+            "key": "A",
+            "url": "audio/studio/pelog/saron-peking/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "S",
+            "url": "audio/studio/pelog/saron-peking/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "D",
+            "url": "audio/studio/pelog/saron-peking/3.pga"
+          },
+          {
+            "id": "4",
+            "label": "4",
+            "key": "F",
+            "url": "audio/studio/pelog/saron-peking/4.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/pelog/saron-peking/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/pelog/saron-peking/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7",
+            "key": "J",
+            "url": "audio/studio/pelog/saron-peking/7.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "slenthem",
+      "name": "Slenthem",
+      "category": "Balungan",
+      "layout": "bilah",
+      "canDamp": true,
+      "desc": "Bilah tipis beresonator tabung bambu dengan dengung bass yang lembut.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "6l",
+            "label": "6̣",
+            "key": "A",
+            "url": "audio/studio/slendro/slenthem/6l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1",
+            "key": "S",
+            "url": "audio/studio/slendro/slenthem/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "D",
+            "url": "audio/studio/slendro/slenthem/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "F",
+            "url": "audio/studio/slendro/slenthem/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/slendro/slenthem/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/slendro/slenthem/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "J",
+            "url": "audio/studio/slendro/slenthem/1h.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "1",
+            "label": "1",
+            "key": "A",
+            "url": "audio/studio/pelog/slenthem/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "S",
+            "url": "audio/studio/pelog/slenthem/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "D",
+            "url": "audio/studio/pelog/slenthem/3.pga"
+          },
+          {
+            "id": "4",
+            "label": "4",
+            "key": "F",
+            "url": "audio/studio/pelog/slenthem/4.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/pelog/slenthem/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/pelog/slenthem/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7",
+            "key": "J",
+            "url": "audio/studio/pelog/slenthem/7.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gender-barung",
+      "name": "Gender Barung",
+      "category": "Panerusan",
+      "layout": "bilah",
+      "canDamp": true,
+      "desc": "Instrumen cengkok dua tangan berbilah perunggu dengan resonansi hangat.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "6l",
+            "label": "6̣̣",
+            "key": "A",
+            "url": "audio/studio/slendro/gender-barung/6l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1̣",
+            "key": "S",
+            "url": "audio/studio/slendro/gender-barung/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2̣",
+            "key": "D",
+            "url": "audio/studio/slendro/gender-barung/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3̣",
+            "key": "F",
+            "url": "audio/studio/slendro/gender-barung/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5̣",
+            "key": "G",
+            "url": "audio/studio/slendro/gender-barung/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6̣",
+            "key": "H",
+            "url": "audio/studio/slendro/gender-barung/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1",
+            "key": "J",
+            "url": "audio/studio/slendro/gender-barung/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2",
+            "key": "K",
+            "url": "audio/studio/slendro/gender-barung/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3",
+            "key": "L",
+            "url": "audio/studio/slendro/gender-barung/3h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5",
+            "key": ";",
+            "url": "audio/studio/slendro/gender-barung/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6",
+            "key": "Q",
+            "url": "audio/studio/slendro/gender-barung/6h.pga"
+          },
+          {
+            "id": "1hh",
+            "label": "1̇",
+            "key": "W",
+            "url": "audio/studio/slendro/gender-barung/1hh.pga"
+          },
+          {
+            "id": "2hh",
+            "label": "2̇",
+            "key": "E",
+            "url": "audio/studio/slendro/gender-barung/2hh.pga"
+          },
+          {
+            "id": "3hh",
+            "label": "3̇",
+            "key": "R",
+            "url": "audio/studio/slendro/gender-barung/3hh.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "6l",
+            "label": "6̣̣",
+            "key": "A",
+            "url": "audio/studio/pelog/gender-barung/6l.pga"
+          },
+          {
+            "id": "7l",
+            "label": "7̣̣",
+            "key": "S",
+            "url": "audio/studio/pelog/gender-barung/7l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1̣",
+            "key": "D",
+            "url": "audio/studio/pelog/gender-barung/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2̣",
+            "key": "F",
+            "url": "audio/studio/pelog/gender-barung/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3̣",
+            "key": "G",
+            "url": "audio/studio/pelog/gender-barung/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5̣",
+            "key": "H",
+            "url": "audio/studio/pelog/gender-barung/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6̣",
+            "key": "J",
+            "url": "audio/studio/pelog/gender-barung/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7̣",
+            "key": "K",
+            "url": "audio/studio/pelog/gender-barung/7.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1",
+            "key": "L",
+            "url": "audio/studio/pelog/gender-barung/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2",
+            "key": ";",
+            "url": "audio/studio/pelog/gender-barung/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3",
+            "key": "Q",
+            "url": "audio/studio/pelog/gender-barung/3h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5",
+            "key": "W",
+            "url": "audio/studio/pelog/gender-barung/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6",
+            "key": "E",
+            "url": "audio/studio/pelog/gender-barung/6h.pga"
+          },
+          {
+            "id": "7h",
+            "label": "7",
+            "key": "R",
+            "url": "audio/studio/pelog/gender-barung/7h.pga"
+          },
+          {
+            "id": "1hh",
+            "label": "1̇",
+            "key": "T",
+            "url": "audio/studio/pelog/gender-barung/1hh.pga"
+          },
+          {
+            "id": "2hh",
+            "label": "2̇",
+            "key": "Y",
+            "url": "audio/studio/pelog/gender-barung/2hh.pga"
+          },
+          {
+            "id": "3hh",
+            "label": "3̇",
+            "key": "U",
+            "url": "audio/studio/pelog/gender-barung/3hh.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gender-penerus",
+      "name": "Gender Penerus",
+      "category": "Panerusan",
+      "layout": "bilah",
+      "canDamp": true,
+      "desc": "Gender bernada satu oktaf lebih tinggi untuk ornamen melodi halus.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "6l",
+            "label": "6̣̣",
+            "key": "A",
+            "url": "audio/studio/slendro/gender-penerus/6l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1̣",
+            "key": "S",
+            "url": "audio/studio/slendro/gender-penerus/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2̣",
+            "key": "D",
+            "url": "audio/studio/slendro/gender-penerus/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3̣",
+            "key": "F",
+            "url": "audio/studio/slendro/gender-penerus/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5̣",
+            "key": "G",
+            "url": "audio/studio/slendro/gender-penerus/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6̣",
+            "key": "H",
+            "url": "audio/studio/slendro/gender-penerus/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1",
+            "key": "J",
+            "url": "audio/studio/slendro/gender-penerus/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2",
+            "key": "K",
+            "url": "audio/studio/slendro/gender-penerus/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3",
+            "key": "L",
+            "url": "audio/studio/slendro/gender-penerus/3h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5",
+            "key": ";",
+            "url": "audio/studio/slendro/gender-penerus/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6",
+            "key": "Q",
+            "url": "audio/studio/slendro/gender-penerus/6h.pga"
+          },
+          {
+            "id": "1hh",
+            "label": "1̇",
+            "key": "W",
+            "url": "audio/studio/slendro/gender-penerus/1hh.pga"
+          },
+          {
+            "id": "2hh",
+            "label": "2̇",
+            "key": "E",
+            "url": "audio/studio/slendro/gender-penerus/2hh.pga"
+          },
+          {
+            "id": "3hh",
+            "label": "3̇",
+            "key": "R",
+            "url": "audio/studio/slendro/gender-penerus/3hh.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "6l",
+            "label": "6̣̣",
+            "key": "A",
+            "url": "audio/studio/pelog/gender-penerus/6l.pga"
+          },
+          {
+            "id": "7l",
+            "label": "7̣̣",
+            "key": "S",
+            "url": "audio/studio/pelog/gender-penerus/7l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1̣",
+            "key": "D",
+            "url": "audio/studio/pelog/gender-penerus/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2̣",
+            "key": "F",
+            "url": "audio/studio/pelog/gender-penerus/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3̣",
+            "key": "G",
+            "url": "audio/studio/pelog/gender-penerus/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5̣",
+            "key": "H",
+            "url": "audio/studio/pelog/gender-penerus/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6̣",
+            "key": "J",
+            "url": "audio/studio/pelog/gender-penerus/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7̣",
+            "key": "K",
+            "url": "audio/studio/pelog/gender-penerus/7.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1",
+            "key": "L",
+            "url": "audio/studio/pelog/gender-penerus/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2",
+            "key": ";",
+            "url": "audio/studio/pelog/gender-penerus/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3",
+            "key": "Q",
+            "url": "audio/studio/pelog/gender-penerus/3h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5",
+            "key": "W",
+            "url": "audio/studio/pelog/gender-penerus/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6",
+            "key": "E",
+            "url": "audio/studio/pelog/gender-penerus/6h.pga"
+          },
+          {
+            "id": "7h",
+            "label": "7",
+            "key": "R",
+            "url": "audio/studio/pelog/gender-penerus/7h.pga"
+          },
+          {
+            "id": "1hh",
+            "label": "1̇",
+            "key": "T",
+            "url": "audio/studio/pelog/gender-penerus/1hh.pga"
+          },
+          {
+            "id": "2hh",
+            "label": "2̇",
+            "key": "Y",
+            "url": "audio/studio/pelog/gender-penerus/2hh.pga"
+          },
+          {
+            "id": "3hh",
+            "label": "3̇",
+            "key": "U",
+            "url": "audio/studio/pelog/gender-penerus/3hh.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gambang",
+      "name": "Gambang Kayu",
+      "category": "Panerusan",
+      "layout": "bilah",
+      "canDamp": false,
+      "desc": "Bilah kayu keras berentang nada luas dengan karakter perkusif lincah.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "1l",
+            "label": "1̣̣",
+            "key": "A",
+            "url": "audio/studio/slendro/gambang/1l.pga"
+          },
+          {
+            "id": "2l",
+            "label": "2̣̣",
+            "key": "S",
+            "url": "audio/studio/slendro/gambang/2l.pga"
+          },
+          {
+            "id": "3l",
+            "label": "3̣̣",
+            "key": "D",
+            "url": "audio/studio/slendro/gambang/3l.pga"
+          },
+          {
+            "id": "5l",
+            "label": "5̣̣",
+            "key": "F",
+            "url": "audio/studio/slendro/gambang/5l.pga"
+          },
+          {
+            "id": "6l",
+            "label": "6̣̣",
+            "key": "G",
+            "url": "audio/studio/slendro/gambang/6l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1̣",
+            "key": "H",
+            "url": "audio/studio/slendro/gambang/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2̣",
+            "key": "J",
+            "url": "audio/studio/slendro/gambang/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3̣",
+            "key": "K",
+            "url": "audio/studio/slendro/gambang/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5̣",
+            "key": "L",
+            "url": "audio/studio/slendro/gambang/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6̣",
+            "key": ";",
+            "url": "audio/studio/slendro/gambang/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1",
+            "key": "Q",
+            "url": "audio/studio/slendro/gambang/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2",
+            "key": "W",
+            "url": "audio/studio/slendro/gambang/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3",
+            "key": "E",
+            "url": "audio/studio/slendro/gambang/3h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5",
+            "key": "R",
+            "url": "audio/studio/slendro/gambang/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6",
+            "key": "T",
+            "url": "audio/studio/slendro/gambang/6h.pga"
+          },
+          {
+            "id": "1hh",
+            "label": "1̇",
+            "key": "Y",
+            "url": "audio/studio/slendro/gambang/1hh.pga"
+          },
+          {
+            "id": "2hh",
+            "label": "2̇",
+            "key": "U",
+            "url": "audio/studio/slendro/gambang/2hh.pga"
+          },
+          {
+            "id": "3hh",
+            "label": "3̇",
+            "key": "I",
+            "url": "audio/studio/slendro/gambang/3hh.pga"
+          },
+          {
+            "id": "5hh",
+            "label": "5̇",
+            "key": "O",
+            "url": "audio/studio/slendro/gambang/5hh.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "6ll",
+            "label": "6̣̣̣",
+            "key": "A",
+            "url": "audio/studio/pelog/gambang/6ll.pga"
+          },
+          {
+            "id": "1l",
+            "label": "1̣̣",
+            "key": "S",
+            "url": "audio/studio/pelog/gambang/1l.pga"
+          },
+          {
+            "id": "2l",
+            "label": "2̣̣",
+            "key": "D",
+            "url": "audio/studio/pelog/gambang/2l.pga"
+          },
+          {
+            "id": "3l",
+            "label": "3̣̣",
+            "key": "F",
+            "url": "audio/studio/pelog/gambang/3l.pga"
+          },
+          {
+            "id": "5l",
+            "label": "5̣̣",
+            "key": "G",
+            "url": "audio/studio/pelog/gambang/5l.pga"
+          },
+          {
+            "id": "6l",
+            "label": "6̣̣",
+            "key": "H",
+            "url": "audio/studio/pelog/gambang/6l.pga"
+          },
+          {
+            "id": "1",
+            "label": "1̣",
+            "key": "J",
+            "url": "audio/studio/pelog/gambang/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2̣",
+            "key": "K",
+            "url": "audio/studio/pelog/gambang/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3̣",
+            "key": "L",
+            "url": "audio/studio/pelog/gambang/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5̣",
+            "key": ";",
+            "url": "audio/studio/pelog/gambang/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6̣",
+            "key": "Q",
+            "url": "audio/studio/pelog/gambang/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1",
+            "key": "W",
+            "url": "audio/studio/pelog/gambang/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2",
+            "key": "E",
+            "url": "audio/studio/pelog/gambang/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3",
+            "key": "R",
+            "url": "audio/studio/pelog/gambang/3h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5",
+            "key": "T",
+            "url": "audio/studio/pelog/gambang/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6",
+            "key": "Y",
+            "url": "audio/studio/pelog/gambang/6h.pga"
+          },
+          {
+            "id": "1hh",
+            "label": "1̇",
+            "key": "U",
+            "url": "audio/studio/pelog/gambang/1hh.pga"
+          },
+          {
+            "id": "2hh",
+            "label": "2̇",
+            "key": "I",
+            "url": "audio/studio/pelog/gambang/2hh.pga"
+          },
+          {
+            "id": "3hh",
+            "label": "3̇",
+            "key": "O",
+            "url": "audio/studio/pelog/gambang/3hh.pga"
+          },
+          {
+            "id": "5hh",
+            "label": "5̇",
+            "key": "P",
+            "url": "audio/studio/pelog/gambang/5hh.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bonang-barung",
+      "name": "Bonang Barung",
+      "category": "Pencon",
+      "layout": "bonang",
+      "canDamp": true,
+      "desc": "Deretan pencon dua baris sebagai pemimpin pola melodi dan mipil.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "1",
+            "label": "1",
+            "key": "A",
+            "url": "audio/studio/slendro/bonang-barung/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "S",
+            "url": "audio/studio/slendro/bonang-barung/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "D",
+            "url": "audio/studio/slendro/bonang-barung/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "F",
+            "url": "audio/studio/slendro/bonang-barung/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "G",
+            "url": "audio/studio/slendro/bonang-barung/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "H",
+            "url": "audio/studio/slendro/bonang-barung/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2̇",
+            "key": "J",
+            "url": "audio/studio/slendro/bonang-barung/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3̇",
+            "key": "K",
+            "url": "audio/studio/slendro/bonang-barung/3h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5̇",
+            "key": "L",
+            "url": "audio/studio/slendro/bonang-barung/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6̇",
+            "key": ";",
+            "url": "audio/studio/slendro/bonang-barung/6h.pga"
+          },
+          {
+            "id": "1hh",
+            "label": "1̇̇",
+            "key": "Q",
+            "url": "audio/studio/slendro/bonang-barung/1hh.pga"
+          },
+          {
+            "id": "2hh",
+            "label": "2̇̇",
+            "key": "W",
+            "url": "audio/studio/slendro/bonang-barung/2hh.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "1",
+            "label": "1",
+            "key": "A",
+            "url": "audio/studio/pelog/bonang-barung/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "S",
+            "url": "audio/studio/pelog/bonang-barung/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "D",
+            "url": "audio/studio/pelog/bonang-barung/3.pga"
+          },
+          {
+            "id": "4",
+            "label": "4",
+            "key": "F",
+            "url": "audio/studio/pelog/bonang-barung/4.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/pelog/bonang-barung/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/pelog/bonang-barung/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7",
+            "key": "J",
+            "url": "audio/studio/pelog/bonang-barung/7.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "K",
+            "url": "audio/studio/pelog/bonang-barung/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2̇",
+            "key": "L",
+            "url": "audio/studio/pelog/bonang-barung/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3̇",
+            "key": ";",
+            "url": "audio/studio/pelog/bonang-barung/3h.pga"
+          },
+          {
+            "id": "4h",
+            "label": "4̇",
+            "key": "Q",
+            "url": "audio/studio/pelog/bonang-barung/4h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5̇",
+            "key": "W",
+            "url": "audio/studio/pelog/bonang-barung/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6̇",
+            "key": "E",
+            "url": "audio/studio/pelog/bonang-barung/6h.pga"
+          },
+          {
+            "id": "7h",
+            "label": "7̇",
+            "key": "R",
+            "url": "audio/studio/pelog/bonang-barung/7h.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bonang-penerus",
+      "name": "Bonang Penerus",
+      "category": "Pencon",
+      "layout": "bonang",
+      "canDamp": true,
+      "desc": "Bonang beroktaf tinggi yang memainkan pola ganda lebih cepat.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "1",
+            "label": "1",
+            "key": "A",
+            "url": "audio/studio/slendro/bonang-penerus/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "S",
+            "url": "audio/studio/slendro/bonang-penerus/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "D",
+            "url": "audio/studio/slendro/bonang-penerus/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "F",
+            "url": "audio/studio/slendro/bonang-penerus/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "G",
+            "url": "audio/studio/slendro/bonang-penerus/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "H",
+            "url": "audio/studio/slendro/bonang-penerus/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2̇",
+            "key": "J",
+            "url": "audio/studio/slendro/bonang-penerus/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3̇",
+            "key": "K",
+            "url": "audio/studio/slendro/bonang-penerus/3h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5̇",
+            "key": "L",
+            "url": "audio/studio/slendro/bonang-penerus/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6̇",
+            "key": ";",
+            "url": "audio/studio/slendro/bonang-penerus/6h.pga"
+          },
+          {
+            "id": "1hh",
+            "label": "1̇̇",
+            "key": "Q",
+            "url": "audio/studio/slendro/bonang-penerus/1hh.pga"
+          },
+          {
+            "id": "2hh",
+            "label": "2̇̇",
+            "key": "W",
+            "url": "audio/studio/slendro/bonang-penerus/2hh.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "1",
+            "label": "1",
+            "key": "A",
+            "url": "audio/studio/pelog/bonang-penerus/1.pga"
+          },
+          {
+            "id": "2",
+            "label": "2",
+            "key": "S",
+            "url": "audio/studio/pelog/bonang-penerus/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "D",
+            "url": "audio/studio/pelog/bonang-penerus/3.pga"
+          },
+          {
+            "id": "4",
+            "label": "4",
+            "key": "F",
+            "url": "audio/studio/pelog/bonang-penerus/4.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "G",
+            "url": "audio/studio/pelog/bonang-penerus/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "H",
+            "url": "audio/studio/pelog/bonang-penerus/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7",
+            "key": "J",
+            "url": "audio/studio/pelog/bonang-penerus/7.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "K",
+            "url": "audio/studio/pelog/bonang-penerus/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2̇",
+            "key": "L",
+            "url": "audio/studio/pelog/bonang-penerus/2h.pga"
+          },
+          {
+            "id": "3h",
+            "label": "3̇",
+            "key": ";",
+            "url": "audio/studio/pelog/bonang-penerus/3h.pga"
+          },
+          {
+            "id": "4h",
+            "label": "4̇",
+            "key": "Q",
+            "url": "audio/studio/pelog/bonang-penerus/4h.pga"
+          },
+          {
+            "id": "5h",
+            "label": "5̇",
+            "key": "W",
+            "url": "audio/studio/pelog/bonang-penerus/5h.pga"
+          },
+          {
+            "id": "6h",
+            "label": "6̇",
+            "key": "E",
+            "url": "audio/studio/pelog/bonang-penerus/6h.pga"
+          },
+          {
+            "id": "7h",
+            "label": "7̇",
+            "key": "R",
+            "url": "audio/studio/pelog/bonang-penerus/7h.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kenong",
+      "name": "Kenong",
+      "category": "Pencon",
+      "layout": "pencon",
+      "canDamp": true,
+      "desc": "Pencon besar penanda penggalan kalimat musikal (gatra/kenongan).",
+      "scales": {
+        "slendro": [
+          {
+            "id": "2",
+            "label": "2",
+            "key": "A",
+            "url": "audio/studio/slendro/kenong/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "S",
+            "url": "audio/studio/slendro/kenong/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "D",
+            "url": "audio/studio/slendro/kenong/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "F",
+            "url": "audio/studio/slendro/kenong/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "G",
+            "url": "audio/studio/slendro/kenong/1h.pga"
+          },
+          {
+            "id": "2h",
+            "label": "2̇",
+            "key": "H",
+            "url": "audio/studio/slendro/kenong/2h.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "2",
+            "label": "2",
+            "key": "A",
+            "url": "audio/studio/pelog/kenong/2.pga"
+          },
+          {
+            "id": "3",
+            "label": "3",
+            "key": "S",
+            "url": "audio/studio/pelog/kenong/3.pga"
+          },
+          {
+            "id": "4",
+            "label": "4",
+            "key": "D",
+            "url": "audio/studio/slendro/kenong/5.pga"
+          },
+          {
+            "id": "5",
+            "label": "5",
+            "key": "F",
+            "url": "audio/studio/pelog/kenong/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "6",
+            "key": "G",
+            "url": "audio/studio/pelog/kenong/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "7",
+            "key": "H",
+            "url": "audio/studio/pelog/kenong/7.pga"
+          },
+          {
+            "id": "1h",
+            "label": "1̇",
+            "key": "J",
+            "url": "audio/studio/pelog/kenong/1h.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kethuk-kempyang",
+      "name": "Kethuk & Kempyang",
+      "category": "Pencon",
+      "layout": "pencon",
+      "canDamp": true,
+      "desc": "Penjaga denyut ketukan dasar gending Jawa.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "kethuk-2",
+            "label": "Kethuk (2)",
+            "key": "A",
+            "url": "audio/studio/slendro/kethuk-kempyang/kethuk-2.pga"
+          },
+          {
+            "id": "kempyang-1",
+            "label": "Kempyang (1)",
+            "key": "S",
+            "url": "audio/studio/slendro/kethuk-kempyang/kempyang-1.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "kethuk-6",
+            "label": "Kethuk (6)",
+            "key": "A",
+            "url": "audio/studio/pelog/kethuk-kempyang/kethuk-6.pga"
+          },
+          {
+            "id": "kempyang-6",
+            "label": "Kempyang (6)",
+            "key": "S",
+            "url": "audio/studio/pelog/kethuk-kempyang/kempyang-6.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kempul",
+      "name": "Kempul, Suwukan & Gong Ageng",
+      "category": "Gong",
+      "layout": "gong",
+      "canDamp": true,
+      "desc": "Satu gayor tanpa tumpang-tindih register: Kempul nada atas, Gong Suwukan (register bawah), dan Gong Ageng penutup gongan.",
+      "scales": {
+        "slendro": [
+          {
+            "id": "3",
+            "label": "Kempul 3",
+            "key": "A",
+            "url": "audio/studio/slendro/kempul/3.pga"
+          },
+          {
+            "id": "5",
+            "label": "Kempul 5",
+            "key": "S",
+            "url": "audio/studio/slendro/kempul/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "Kempul 6",
+            "key": "D",
+            "url": "audio/studio/slendro/kempul/6.pga"
+          },
+          {
+            "id": "1h",
+            "label": "Kempul 1̇",
+            "key": "F",
+            "url": "audio/studio/slendro/kempul/1.pga"
+          },
+          {
+            "id": "2h",
+            "label": "Kempul 2̇",
+            "key": "G",
+            "url": "audio/studio/slendro/kempul/2.pga"
+          },
+          {
+            "id": "suwukan-6",
+            "label": "Suwukan 6",
+            "key": "H",
+            "url": "audio/studio/both/gong-ageng/suwukan.pga"
+          },
+          {
+            "id": "suwukan-1",
+            "label": "Suwukan 1",
+            "key": "J",
+            "url": "audio/studio/slendro/kempul/1l.pga"
+          },
+          {
+            "id": "suwukan-2",
+            "label": "Suwukan 2",
+            "key": "K",
+            "url": "audio/studio/slendro/kempul/2l.pga"
+          },
+          {
+            "id": "gong-ageng",
+            "label": "Gong Ageng",
+            "key": "L",
+            "url": "audio/studio/both/gong-ageng/gong-ageng.pga"
+          }
+        ],
+        "pelog": [
+          {
+            "id": "3",
+            "label": "Kempul 3",
+            "key": "A",
+            "url": "audio/studio/pelog/kempul/3.pga"
+          },
+          {
+            "id": "4",
+            "label": "Kempul 4",
+            "key": "S",
+            "url": "audio/studio/slendro/kempul/5.pga"
+          },
+          {
+            "id": "5",
+            "label": "Kempul 5",
+            "key": "D",
+            "url": "audio/studio/pelog/kempul/5.pga"
+          },
+          {
+            "id": "6",
+            "label": "Kempul 6",
+            "key": "F",
+            "url": "audio/studio/pelog/kempul/6.pga"
+          },
+          {
+            "id": "7",
+            "label": "Kempul 7",
+            "key": "G",
+            "url": "audio/studio/pelog/kempul/7.pga"
+          },
+          {
+            "id": "1h",
+            "label": "Kempul 1̇",
+            "key": "H",
+            "url": "audio/studio/pelog/kempul/1.pga"
+          },
+          {
+            "id": "suwukan-7",
+            "label": "Suwukan 7",
+            "key": "J",
+            "url": "audio/studio/both/gong-ageng/suwukan.pga"
+          },
+          {
+            "id": "suwukan-1",
+            "label": "Suwukan 1",
+            "key": "K",
+            "detune": -1200,
+            "url": "audio/studio/pelog/kempul/1.pga"
+          },
+          {
+            "id": "suwukan-2",
+            "label": "Suwukan 2",
+            "key": "L",
+            "url": "audio/studio/pelog/kempul/2.pga"
+          },
+          {
+            "id": "gong-ageng",
+            "label": "Gong Ageng",
+            "key": ";",
+            "url": "audio/studio/both/gong-ageng/gong-ageng.pga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kendhang",
+      "name": "Kendhang Set (Ageng, Ciblon, Ketipung)",
+      "category": "Perkusi",
+      "layout": "kendhang",
+      "canDamp": false,
+      "desc": "Pengendali irama & dinamika ensembel: Ageng, Ciblon, dan Ketipung.",
+      "scales": {
+        "both": [
+          {
+            "id": "dha-ageng",
+            "label": "Dha (Ageng)",
+            "key": "A",
+            "url": "audio/studio/both/kendhang/dha-ageng.pga"
+          },
+          {
+            "id": "thung-ciblon",
+            "label": "Thung (Ciblon)",
+            "key": "S",
+            "url": "audio/studio/both/kendhang/thung-ciblon.pga"
+          },
+          {
+            "id": "dlang-ciblon",
+            "label": "Dlang (Ciblon)",
+            "key": "D",
+            "url": "audio/studio/both/kendhang/dlang-ciblon.pga"
+          },
+          {
+            "id": "lung-ciblon",
+            "label": "Lung (Ciblon)",
+            "key": "F",
+            "url": "audio/studio/both/kendhang/lung-ciblon.pga"
+          },
+          {
+            "id": "tong-ciblon",
+            "label": "Tong (Ciblon)",
+            "key": "G",
+            "url": "audio/studio/both/kendhang/tong-ciblon.pga"
+          },
+          {
+            "id": "tak-ciblon",
+            "label": "Tak (Ciblon)",
+            "key": "H",
+            "url": "audio/studio/both/kendhang/tak-ciblon.pga"
+          },
+          {
+            "id": "dhung-ketipung",
+            "label": "Dhung (Ketipung)",
+            "key": "J",
+            "url": "audio/studio/both/kendhang/dhung-ketipung.pga"
+          },
+          {
+            "id": "tak-ketipung",
+            "label": "Tak (Ketipung)",
+            "key": "K",
+            "url": "audio/studio/both/kendhang/tak-ketipung.pga"
+          }
+        ]
+      }
+    }
+  ]
+}
