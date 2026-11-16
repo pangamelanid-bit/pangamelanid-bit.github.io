@@ -1,5 +1,5 @@
 /* Hallmark · checked: 2026-11-15 · genre: modern-minimal · theme: furrow · shape: app screen · scope: app · redesign: restyle · v5.0.0 */
-/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 · cut wide blur shadows, backdrop blur, and slate washes for Navy #000529/#031059 panels, 8px-10px Furrow corners, and Red Hat Display 600 over Red Hat Text 400/500 */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 · cut wide blur shadows, backdrop blur, and slate washes for Navy #000529/#031059 panels, 8px-10px Furrow corners, and Philosopher 700 over Plus Jakarta Sans 400/500/600 */
 /* Hallmark · waive 39b · button.gamelan-pad at 68px to 218px · gamelan bilah, pencon, gong, and kendhang pads are playable musical instrument surfaces, not form buttons */
 
 :root {
@@ -30,9 +30,9 @@
   --line: rgba(255, 255, 255, 0.16);
   --line-gold: rgba(244, 196, 48, 0.28);
 
-  --font-display: 'Red Hat Display', system-ui, -apple-system, sans-serif;
-  --font-body: 'Red Hat Text', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Red Hat Mono', ui-monospace, monospace;
+  --font-display: 'Philosopher', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --edge-light: inset 0 1px 0 rgba(255, 255, 255, 0.14);
   --edge-lit: inset 0 1px 0 rgba(255, 245, 220, 0.45);
