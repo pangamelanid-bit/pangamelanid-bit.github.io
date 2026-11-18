@@ -59,6 +59,7 @@ const el = {
   leaveRoomBtn: document.getElementById('leaveRoomBtn'),
   copyCodeBtn: document.getElementById('copyCodeBtn'),
   copyInviteBtn: document.getElementById('copyInviteBtn'),
+  roomCopyStatus: document.getElementById('roomCopyStatus'),
   roomActiveBox: document.getElementById('roomActiveBox'),
   roomActiveCode: document.getElementById('roomActiveCode'),
   roomModalStatus: document.getElementById('roomModalStatus'),
@@ -126,6 +127,8 @@ function clearRoomSession() {
 }
 
 function showToast(msg, variant = 'gold') {
+  // Don't surface background toasts or announce in inert DOM while a modal dialog is open
+  if (el.roomModal?.open) return;
   const item = document.createElement('div');
   item.className = `studio-toast toast-${variant}`;
   item.textContent = msg;
@@ -134,6 +137,20 @@ function showToast(msg, variant = 'gold') {
     item.classList.add('is-fading');
     setTimeout(() => item.remove(), 300);
   }, 2600);
+}
+
+function resolveSafeAudioUrl(instId, scaleKey, noteId, fallbackUrl) {
+  const inst = manifest?.instruments?.find((i) => i.id === instId);
+  const notes = inst?.scales?.[scaleKey] || inst?.scales?.both || [];
+  const found = notes.find((n) => n.id === noteId);
+  if (found?.url) return found.url;
+  if (
+    typeof fallbackUrl === 'string' &&
+    /^audio\/studio\/[a-z0-9/_-]+\.(mp3|pga|wav|ogg)$/i.test(fallbackUrl)
+  ) {
+    return fallbackUrl;
+  }
+  return null;
 }
 
 function getNoteDetune(instId, scaleKey, noteId) {
@@ -239,8 +256,10 @@ const mp = new MultiplayerManager({
     renderRoster(players);
   },
   onRemoteHit: (data) => {
+    const safeUrl = resolveSafeAudioUrl(data.instId, data.scale, data.noteId, data.url);
+    if (!safeUrl) return;
     // Play remote audio (auto lazy-fetches if not yet cached)
-    engine.play(data.instId, data.scale, data.noteId, data.url, {
+    engine.play(data.instId, data.scale, data.noteId, safeUrl, {
       velocity: data.velocity || 1.0,
       pan: 0.12,
       noteDetune: getNoteDetune(data.instId, data.scale, data.noteId)
@@ -317,30 +336,49 @@ const mp = new MultiplayerManager({
 
 function renderRoster(players) {
   if (!players || players.length === 0) {
-    el.rosterBar.innerHTML = `
-      <div class="roster-chip is-self">
-        <span class="roster-dot"></span>
-        <span>Anda (${currentInst ? currentInst.name : 'Studio'}), Mode Solo</span>
-      </div>
-    `;
+    const chip = document.createElement('div');
+    chip.className = 'roster-chip is-self';
+    const dot = document.createElement('span');
+    dot.className = 'roster-dot';
+    const text = document.createElement('span');
+    text.textContent = `Anda (${currentInst ? currentInst.name : 'Studio'}), Mode Solo`;
+    chip.append(dot, text);
+    el.rosterBar.replaceChildren(chip);
     return;
   }
 
-  el.rosterBar.innerHTML = players
-    .map((p) => {
-      const instObj = manifest?.instruments.find((i) => i.id === p.instId);
-      const instLabel = instObj ? instObj.name : p.instId;
-      const isSelf = p.id === mp.localProfile.id;
-      return `
-        <div class="roster-chip ${isSelf ? 'is-self' : ''}" data-peer-id="${p.id}">
-          <span class="roster-dot"></span>
-          <strong>${escapeHtml(p.name)}</strong>
-          <span class="roster-inst">${escapeHtml(instLabel)}</span>
-          ${p.isHost ? '<span class="roster-host">Host</span>' : ''}
-        </div>
-      `;
-    })
-    .join('');
+  const chips = players.map((p) => {
+    const instObj = manifest?.instruments.find((i) => i.id === p.instId);
+    const instLabel = instObj ? instObj.name : p.instId;
+    const isSelf = p.id === mp.localProfile.id;
+
+    const chip = document.createElement('div');
+    chip.className = isSelf ? 'roster-chip is-self' : 'roster-chip';
+    chip.dataset.peerId = String(p.id || '');
+
+    const dot = document.createElement('span');
+    dot.className = 'roster-dot';
+
+    const nameEl = document.createElement('strong');
+    nameEl.textContent = String(p.name || 'Pemain');
+
+    const instEl = document.createElement('span');
+    instEl.className = 'roster-inst';
+    instEl.textContent = String(instLabel || '');
+
+    chip.append(dot, nameEl, instEl);
+
+    if (p.isHost) {
+      const hostBadge = document.createElement('span');
+      hostBadge.className = 'roster-host';
+      hostBadge.textContent = 'Host';
+      chip.append(hostBadge);
+    }
+
+    return chip;
+  });
+
+  el.rosterBar.replaceChildren(...chips);
 }
 
 function pulseRosterPlayer(peerId) {
@@ -349,14 +387,6 @@ function pulseRosterPlayer(peerId) {
   chip.classList.add('is-playing');
   clearTimeout(chip._pulseTimer);
   chip._pulseTimer = setTimeout(() => chip.classList.remove('is-playing'), 220);
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
 }
 
 async function selectInstrument(instId) {
@@ -421,8 +451,8 @@ function applyGlobalTune(cents, broadcast = true) {
   const label = clamped > 0 ? `+${clamped}` : `${clamped}`;
   el.tuneResetBtn.textContent = `${label} ct`;
   el.tuneResetBtn.setAttribute(
-    'aria-label',
-    clamped === 0 ? 'Reset tune ke 0 cent' : `Reset tune dari ${label} cent ke 0 cent`
+    'aria-description',
+    clamped === 0 ? 'Klik untuk reset pitch ke 0 cent' : `Reset tune dari ${label} cent ke 0 cent`
   );
   el.tuneResetBtn.classList.toggle('is-tuned', clamped !== 0);
   if (broadcast && mp.isHost) {
@@ -590,7 +620,7 @@ function toggleRecording() {
     isRecording = true;
     recordStartTime = Date.now();
     el.recordBtn.classList.add('is-recording');
-    el.recordBtn.setAttribute('aria-label', 'Stop dan Simpan Rekaman');
+    el.recordBtn.setAttribute('aria-label', 'Stop & Simpan Rekaman');
     el.recordBtn.querySelector('.rec-label').textContent = 'Stop & Simpan';
     recordTimer = setInterval(() => {
       const sec = Math.floor((Date.now() - recordStartTime) / 1000);
@@ -621,13 +651,9 @@ async function init() {
   }
 
   // Populate grouped instrument selector
-  const categories = {};
-  manifest.instruments.forEach((inst) => {
-    categories[inst.category] = categories[inst.category] || [];
-    categories[inst.category].push(inst);
-  });
+  const categories = Object.groupBy(manifest.instruments, (inst) => inst.category);
 
-  el.instSelect.innerHTML = '';
+  const groups = [];
   for (const [cat, items] of Object.entries(categories)) {
     const group = document.createElement('optgroup');
     group.label = cat;
@@ -637,8 +663,9 @@ async function init() {
       opt.textContent = inst.name;
       group.appendChild(opt);
     });
-    el.instSelect.appendChild(group);
+    groups.push(group);
   }
+  el.instSelect.replaceChildren(...groups);
 
   // Bind UI events
   el.instSelect.addEventListener('change', (e) => selectInstrument(e.target.value));
@@ -856,9 +883,25 @@ async function init() {
   el.closeRoomBtn.addEventListener('click', () => {
     if (el.roomModal.open) el.roomModal.close();
   });
-  el.roomModal.addEventListener('click', (e) => {
-    if (e.target === el.roomModal && el.roomModal.open) el.roomModal.close();
-  });
+  if (!('closedBy' in HTMLDialogElement.prototype)) {
+    const isOutsideDialog = (e, dialog) => {
+      const r = dialog.getBoundingClientRect();
+      return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+    };
+    let pressedOutside = false;
+    el.roomModal.addEventListener('pointerdown', (e) => {
+      pressedOutside = el.roomModal.open && isOutsideDialog(e, el.roomModal);
+    });
+    el.roomModal.addEventListener('pointerup', (e) => {
+      if (pressedOutside && el.roomModal.open && isOutsideDialog(e, el.roomModal)) {
+        el.roomModal.close();
+      }
+      pressedOutside = false;
+    });
+    el.roomModal.addEventListener('pointercancel', () => {
+      pressedOutside = false;
+    });
+  }
 
   async function copyText(str) {
     if (navigator.clipboard && window.isSecureContext) {
@@ -921,6 +964,7 @@ async function init() {
 
   el.roomCodeInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && el.roomCodeInput.value.trim()) {
+      if (e.isComposing || e.keyCode === 229) return;
       e.preventDefault();
       el.joinRoomBtn.click();
     }
@@ -936,10 +980,52 @@ async function init() {
     savePrefs({ playerName: el.playerNameInput.value.trim() });
   });
 
+  const copyFeedbackTimers = new WeakMap();
+  let copyStatusClearTimer = null;
+  let lastCopyAnnouncement = '';
+
+  function reportRoomCopy(button, ok, successMsg, fallbackMsg) {
+    clearTimeout(copyFeedbackTimers.get(button));
+    clearTimeout(copyStatusClearTimer);
+    [el.copyCodeBtn, el.copyInviteBtn].forEach((b) => {
+      if (!b) return;
+      b.removeAttribute('data-copied');
+      b.removeAttribute('data-failed');
+    });
+    let message = ok ? successMsg : fallbackMsg;
+    if (message === lastCopyAnnouncement) message += '\u00A0';
+    lastCopyAnnouncement = message;
+
+    if (el.roomCopyStatus) {
+      el.roomCopyStatus.textContent = '';
+      void button.offsetWidth;
+      button.setAttribute(ok ? 'data-copied' : 'data-failed', '');
+      requestAnimationFrame(() => {
+        el.roomCopyStatus.textContent = message;
+      });
+      copyStatusClearTimer = setTimeout(() => {
+        if (el.roomCopyStatus) el.roomCopyStatus.textContent = '';
+      }, 2400);
+    }
+
+    copyFeedbackTimers.set(
+      button,
+      setTimeout(() => {
+        button.removeAttribute('data-copied');
+        button.removeAttribute('data-failed');
+      }, 2400)
+    );
+  }
+
   el.copyCodeBtn?.addEventListener('click', async () => {
     if (!mp.roomCode) return;
     const copied = await copyText(mp.roomCode);
-    showToast(copied ? `Kode ${mp.roomCode} disalin!` : `Kode room: ${mp.roomCode}`, 'gold');
+    reportRoomCopy(
+      el.copyCodeBtn,
+      copied,
+      `Kode ${mp.roomCode} disalin`,
+      `Gagal menyalin. Kode room: ${mp.roomCode}`
+    );
   });
 
   el.copyInviteBtn.addEventListener('click', async () => {
@@ -947,7 +1033,12 @@ async function init() {
     const url = new URL(window.location.href);
     url.searchParams.set('room', mp.roomCode);
     const copied = await copyText(url.toString());
-    showToast(copied ? `Link room ${mp.roomCode} disalin!` : `Bagikan kode room: ${mp.roomCode}`, 'gold');
+    reportRoomCopy(
+      el.copyInviteBtn,
+      copied,
+      `Link room ${mp.roomCode} disalin`,
+      `Gagal menyalin. Bagikan kode room: ${mp.roomCode}`
+    );
   });
 
   document.addEventListener('visibilitychange', () => {

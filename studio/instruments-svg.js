@@ -306,7 +306,7 @@ export class InstrumentStage {
     this.keyMap.clear();
     this.padElements.clear();
 
-    this.container.innerHTML = '';
+    this.container.replaceChildren();
 
     const stageWrap = document.createElement('div');
     stageWrap.className = `instrument-rack rack-${layout} inst-${instrument.id}`;

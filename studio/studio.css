@@ -1181,7 +1181,7 @@ h1, h2, h3 {
   --track-h: 8px;
   --thumb-w: 16px;
   --thumb-h: 20px;
-  --slider-progress: calc(((var(--control-value, 0) - var(--attr-min, 0)) / (var(--attr-max, 100) - var(--attr-min, 0))) * 100%);
+  --slider-progress: calc(progress(var(--control-value), var(--attr-min), var(--attr-max)) * 100%);
   --track-fill: linear-gradient(
     to right,
     var(--gold) 0%,
@@ -1202,7 +1202,7 @@ h1, h2, h3 {
   border-radius: var(--radius-pill);
   background-color: var(--navy-deep);
   background-image: var(--track-fill);
-  border: 1px solid var(--line);
+  border: 1px solid #5a6fa6;
 }
 
 .dock-group input[type="range"]::-webkit-slider-thumb {
@@ -1223,7 +1223,7 @@ h1, h2, h3 {
   height: var(--track-h);
   border-radius: var(--radius-pill);
   background-color: var(--navy-deep);
-  border: 1px solid var(--line);
+  border: 1px solid #5a6fa6;
 }
 
 .dock-group input[type="range"]::-moz-range-progress {
@@ -1496,30 +1496,22 @@ h1, h2, h3 {
 
 /* MODAL ROOM */
 .room-modal {
+  width: min(440px, calc(100% - 32px));
+  max-width: 440px;
+  max-height: calc(100dvh - 24px);
+  margin: auto;
   padding: 0;
-  border: 0;
-  background: transparent;
+  border: 1px solid var(--line-gold);
+  border-radius: var(--radius-md);
+  background-color: var(--navy-card);
   color: var(--white);
+  box-shadow: var(--edge-light);
+  overflow: hidden;
 }
 
 .room-modal[open] {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  margin: 0;
-  border: 0;
-  padding: 12px 16px;
-  background-color: var(--modal-backdrop);
-  color: var(--white);
   display: flex;
-  align-items: safe center;
-  justify-content: center;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  z-index: 200;
+  flex-direction: column;
 }
 
 .room-modal:modal {
@@ -1527,23 +1519,17 @@ h1, h2, h3 {
 }
 
 .room-modal::backdrop {
-  background: transparent;
+  background-color: var(--modal-backdrop);
   overflow: hidden;
   overscroll-behavior: contain;
 }
 
 .room-modal-card {
   width: 100%;
-  max-width: 440px;
   max-height: calc(100dvh - 24px);
   overflow-y: auto;
   overscroll-behavior: contain;
-  background-color: var(--navy-card);
-  color: var(--white);
-  border: 1px solid var(--line-gold);
-  border-radius: var(--radius-md);
   padding: 24px;
-  box-shadow: var(--edge-light);
 }
 
 .room-modal-head {
@@ -1713,7 +1699,33 @@ h1, h2, h3 {
 .room-active-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
+}
+
+.room-copy-status {
+  flex: 1 0 100%;
+  min-height: 1.2em;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--status-ok-bright);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.room-copy-status:not(:empty) {
+  opacity: 1;
+}
+
+.btn-copy-invite[data-copied] {
+  border-color: var(--status-ok-bright);
+  color: var(--status-ok-bright);
+}
+
+.btn-copy-invite[data-failed] {
+  border-color: var(--status-warn-border);
+  color: var(--status-warn-text);
 }
 
 .room-active-label {

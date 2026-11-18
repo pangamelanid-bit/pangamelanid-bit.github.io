@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="PAN Gamelan Studio: Studio karawitan gamelan Jawa interaktif untuk bermain bersama secara online maupun solo.">
   <title>PAN Gamelan Studio: Main Bersama Online</title>
   <link rel="icon" type="image/png" href="logo-pan-gamelan.png">
@@ -37,7 +38,7 @@
           <button type="button" class="scale-btn" data-scale="pelog" aria-pressed="false">Pelog</button>
         </div>
 
-        <button type="button" id="openRoomBtn" class="room-pill" data-state="solo" aria-label="Pengaturan Room Multiplayer">
+        <button type="button" id="openRoomBtn" class="room-pill" data-state="solo" aria-description="Buka pengaturan Room Multiplayer">
           <span class="status-dot" aria-hidden="true"></span>
           <span class="status-text" id="roomStatusPillText">Mode Solo (Offline)</span>
         </button>
@@ -113,7 +114,7 @@
         <input type="range" id="bpmRange" min="40" max="140" value="72" aria-label="Tempo BPM" aria-valuetext="72 BPM">
         <span class="dock-label" id="bpmVal">72 BPM</span>
         <button type="button" class="btn-studio" id="metroToggleBtn">Mulai Ketukan</button>
-        <div class="gatra-beats" id="gatraBeats" aria-label="Indikator 4 Ketukan Gatra">
+        <div class="gatra-beats" id="gatraBeats" role="group" aria-label="Indikator 4 Ketukan Gatra">
           <span class="gatra-dot" data-beat="1">1</span>
           <span class="gatra-dot" data-beat="2">2</span>
           <span class="gatra-dot" data-beat="3">3</span>
@@ -126,7 +127,7 @@
         <input type="range" id="masterVol" min="0" max="1.2" step="0.05" value="0.9" aria-label="Volume Utama" aria-valuetext="90%">
         <label class="dock-label" for="tuneRange">Tune:</label>
         <input type="range" id="tuneRange" min="-600" max="600" step="10" value="0" aria-label="Pitch / Tune Global (Cents)" aria-valuetext="0 cents">
-        <button type="button" class="tune-reset-btn" id="tuneResetBtn" aria-label="Reset tune ke 0 cent" title="Klik untuk reset pitch ke 0 ct (nada asli)">0 ct</button>
+        <button type="button" class="tune-reset-btn" id="tuneResetBtn" aria-description="Klik untuk reset pitch ke 0 cent" title="Klik untuk reset pitch ke 0 ct (nada asli)">0 ct</button>
         <button type="button" class="btn-record" id="recordBtn" aria-label="Rekam Sesi Audio">
           <span class="rec-dot" aria-hidden="true"></span>
           <span class="rec-label">Rekam Sesi</span>
@@ -134,7 +135,7 @@
         </button>
       </div>
 
-      <div class="dock-group" aria-label="Isyarat Cepat Studio">
+      <div class="dock-group" role="group" aria-label="Isyarat Cepat Studio">
         <button type="button" class="emote-btn" data-emote="Mulai!">Mulai!</button>
         <button type="button" class="emote-btn" data-emote="Pelan">Pelan</button>
         <button type="button" class="emote-btn" data-emote="Cepat">Cepat</button>
@@ -145,11 +146,11 @@
   </div>
 
   <!-- MULTIPLAYER ROOM MODAL -->
-  <dialog class="room-modal" id="roomModal" aria-labelledby="roomModalTitle">
+  <dialog class="room-modal" id="roomModal" closedby="any" aria-labelledby="roomModalTitle">
     <div class="room-modal-card">
       <div class="room-modal-head">
         <h2 id="roomModalTitle">Studio Bersama (Online)</h2>
-        <button type="button" class="modal-close" id="closeRoomBtn" aria-label="Tutup">&times;</button>
+        <button type="button" class="modal-close" id="closeRoomBtn" aria-label="Tutup"><span aria-hidden="true">&times;</span></button>
       </div>
 
       <div class="form-field">
@@ -182,6 +183,7 @@
           <button type="button" class="btn-outline-gold btn-copy-invite" id="copyInviteBtn">
             Salin Link
           </button>
+          <span class="room-copy-status" id="roomCopyStatus" role="status" aria-live="polite"></span>
         </div>
       </div>
 
@@ -211,7 +213,13 @@
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
 
   <!-- PeerJS for zero-backend WebRTC P2P multiplayer -->
-  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script
+    src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"
+    integrity="sha384-nlUQ8ZqCbvStErob+biJNzSgltf6urV3VGqhfIfzhmg9RXmpeRm76ELw0pYnKlTR"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    defer
+  ></script>
   <script type="module" src="studio/studio-app.js"></script>
   <script>
     (function () {
